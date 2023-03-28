@@ -16,19 +16,56 @@ wiz
 SRPG Studio Version:1.211
 
 ------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------
+You can create items that cause battle
+・Use the weapon you have equipped
+-Refers to item range and effective opponents
+
+how to use:
+Set the item type to "custom" and the keyword to "battle"
+
+■ Restrictions
+Operation is not guaranteed when the target is set to "user only"
+
+■ Creator
+wiz
+
+■ Correspondence version
+SRPG Studio Version:1.211
+
+------------------------------------------------------------------------------*/
 (function() {
 
 //カスタムアイテムのキーワード
+//custom item keyword
 var KEYWORD_BATTLEITEM = 'battle';
 
 //情報ウィンドウでの種類名(～アイテム、～の杖)
-StringTable.ItemInfo_Battle = '戦闘';
+//type name in info window (item, wand)
+var getItemInfo_Battle = function() {
+	var folder = root.getLocalizationFolder();
+	
+	if (folder === 'english') {
+		return 'Battle';
+	}
+	else if (folder === 'japanese') {
+		return '戦闘';
+	}
+	//情報ウィンドウでの種類名(～アイテム、～の杖)
+	//type name in info window (item, wand)
+	return '';
+}
+
 
 //アイテムの追加スコア(プラスの値にすると同じ攻撃より優先して使用するようになる)
+//Additional score for the item (A positive value will give priority to using the same attack)
 var BattleItem_PlusScore = 0;
 
 //カスタムアイテム--------------------------------------------------------------
+//custom item
+
 //ItemSelectionでPosAttackWindowに変更することでダメージ予測を表示するので、ItemPotencyは不要
+//Display damage prediction by changing to pos attack window in item selection, so item potency is unnecessary
 
 var _ItemPackageControl_getCustomItemSelectionObject = ItemPackageControl.getCustomItemSelectionObject;
 ItemPackageControl.getCustomItemSelectionObject = function(item, keyword) {
@@ -86,7 +123,10 @@ ItemPackageControl.getCustomItemAIObject = function(item, keyword) {
 };
 
 //戦闘アイテム------------------------------------------------------------------
+//battle item
+
 //武器での攻撃対象選択に変更
+//Change to attack target selection with weapons
 var BattleItemSelection = defineObject(BaseItemSelection, {
 	setUnitSelection: function() {
 		var weapon = ItemControl.getEquippedWeapon(this._unit);
@@ -101,6 +141,7 @@ var BattleItemSelection = defineObject(BaseItemSelection, {
 });
 
 //使用時にPreAttack
+//pre attack when used
 var BattleItemUse = defineObject(BaseItemUse, {
 	_itemUseParent: null,
 	_preAttack: null,
@@ -138,9 +179,10 @@ var BattleItemUse = defineObject(BaseItemUse, {
 });
 
 //種類と射程
+//type and range
 var BattleItemInfo = defineObject(BaseItemInfo, {
 	drawItemInfoCycle: function(x, y) {
-		ItemInfoRenderer.drawKeyword(x, y, this.getItemTypeName(StringTable.ItemInfo_Battle));
+		ItemInfoRenderer.drawKeyword(x, y, this.getItemTypeName(getItemInfo_Battle()));
 		y += ItemInfoRenderer.getSpaceY();
 		this.drawRange(x, y, this._item.getRangeValue(), this._item.getRangeType());
 	},
@@ -153,11 +195,13 @@ var BattleItemInfo = defineObject(BaseItemInfo, {
 var BattleItemAvailability = defineObject(BaseItemAvailability, {
 	isItemAllowed: function(unit, targetUnit, item) {
 		//武器がないと使えない
+		//can't be used without weapons
 		return ItemControl.getEquippedWeapon(unit) !== null;
 	}
 });
 
 //基本スコアは攻撃と同値
+//base score equals attack
 var BattleItemAI = defineObject(BaseItemAI, {
 	getItemScore: function(unit, combination) {
 		var score = 0;
@@ -167,12 +211,14 @@ var BattleItemAI = defineObject(BaseItemAI, {
 		}
 		
 		// combination.itemを一時的に変更する
+		//change combination.item temporarily
 		var tempItem = combination.item;
 		combination.item = weapon;
 		
 		score = AIScorer.Weapon._getTotalScore(unit, combination);
 		
 		// combination.itemを戻す(いらない)
+		//return combination.item (not needed)
 		combination.item = tempItem;
 		
 		if (score < 0) {
