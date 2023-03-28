@@ -12,9 +12,37 @@ SRPG Stduio Version:1.198
 2019/03/02 オートターンエンド有効時は自動行動後にマップコマンドが開かないように変更
 
 ----------------------------------------------------------*/
+/*----------------------------------------------------------
+Add auto mode to map command.
+At that point, all of your army that have not acted will act the same as the state's automatic AI (probably normal type).
+
+■ Creator
+wiz
+
+■ Correspondence version
+SRPG Studio Version: 1.198
+
+■ Update history
+2019/03/02 Changed so that the map command does not open after automatic action when auto turn end is enabled
+
+----------------------------------------------------------*/
 (function() {
 
 StringTable.AutoMode_CommandName = 'オート';
+
+//Localization support
+var getAutoMode_CommandName = function() {
+	var folder = root.getLocalizationFolder();
+	
+	if (folder === 'english') {
+		return 'Auto Turn';
+	}
+	else if (folder === 'japanese') {
+		return 'オート';
+	}
+
+	return StringTable.AutoMode_CommandName;
+}
 
 var _MapCommand_configureCommands = MapCommand.configureCommands;
 MapCommand.configureCommands = function(groupArray) {
@@ -68,7 +96,7 @@ MapCommand.AutoMode = defineObject(BaseListCommand, {
 	},
 	
 	getCommandName: function() {
-		return StringTable.AutoMode_CommandName;
+		return getAutoMode_CommandName();
 	},
 	
 	isCommandDisplayable: function() {

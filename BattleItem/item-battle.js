@@ -42,6 +42,8 @@ var KEYWORD_BATTLEITEM = 'battle';
 
 //情報ウィンドウでの種類名(～アイテム、～の杖)
 //type name in info window (item, wand)
+StringTable.ItemInfo_Battle = '戦闘';
+
 var getItemInfo_Battle = function() {
 	var folder = root.getLocalizationFolder();
 	
@@ -51,9 +53,8 @@ var getItemInfo_Battle = function() {
 	else if (folder === 'japanese') {
 		return '戦闘';
 	}
-	//情報ウィンドウでの種類名(～アイテム、～の杖)
-	//type name in info window (item, wand)
-	return '';
+
+	return StringTable.ItemInfo_Battle;
 }
 
 

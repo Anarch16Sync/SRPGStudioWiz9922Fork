@@ -136,3 +136,141 @@ twitter: https://twitter.com/wiz9922
 GitHub: https://github.com/wiz9922/SRPGstudio  
 mail: wizjp22@gmail.com  
 
+# Plugin for SRPGstudio
+Plugins for SRPG Studio
+
+## terms of service
+・Use is limited to games using SRPG Studio
+・Commercial use allowed
+・Processing, redistribution, reprinting OK (impersonating the author and selling the script are prohibited)
+・Copyright notation and usage report are optional
+・Please comply with the SRPG Studio Terms of Use.
+http://srpgstudio.com/guide/rules.html
+
+## AIScoreDistance
+Add positional relationships such as distance to the elements that determine the attack position of AI.
+Enemy's useless movement is improved to some extent.
+
+## AISimpleForDifficulty
+Simplify the AI ​​by difficulty.
+
+## AttackLimitWeapon
+Weapons can be created for offensive or counterattack purposes.
+
+## AttributeSystem
+Implement damage change by attribute.
+・Only attribute-main is required, the others are optional
+・By default, it is desirable to use 2 characters or less for the name due to the display range.
+*attribute-main
+Main processing
+*attribute-attack window
+ Display power increase (↑) or decrease (↓) by attribute in the pre-battle window
+*attribute-iteminfo
+ Added attribute information to item info window
+*attribute-terraininfo
+ Added attribute information to terrain window
+*attribute-unitmenu
+ Added attribute resistance list page to unit menu
+
+## AutoModeCommand
+Add auto mode to map commands (all unacted units automatically act).
+
+## Battle Items
+You can create items that cause battle.
+
+## BelongPanel
+Add a color panel for each affiliation under the character chip.
+・If you copy Plugin and Material, you can use it as it is
+・If you want to use another image, please specify it in belong-panel
+ Normally, 32*32 images are arranged in order of own army, enemy army, and allied army.
+*Since ver1.123, the equivalent function has been officially added as "Map unit symbol"
+
+## Change Difficulty
+You can change the difficulty from the event.
+
+## CustomSkillInvocationHide
+For custom skills that are not displayed when activated, the activation rate will be hidden in the skill information window.
+
+## Effective Skills
+You can create a skill that is always effective against effective opponents (non-activation type)
+
+## ExperienceDistributionAdd
+Implement additional functions on the experience value distribution screen.
+
+## ExperienceGaugeBar
+Change the experience value acquisition screen to a bar display (type that does not use UI images)
+
+## ExtendTestTable
+Change switch adjustment and variable adjustment screens.
+
+## Fixed Exp
+Fixed the amount of experience gained in the map.
+・Combat experience
+・Experience points when using items
+・Experience points when using skills
+
+## HpGaugeColor
+Change the color (image) of the HP gauge according to the remaining HP.
+
+## Item Synthesis
+Create an item synthesis (shop).
+Currently only bases.
+
+## MapCursorEvent
+You can create an event that fires when a specific location is selected with the map cursor.
+
+## Master Skills
+You can get bonuses when equipping certain weapon types.
+
+## Message Emotion
+Images can be displayed in addition to face graphics and standing pictures in messages, such as comic symbols.
+
+## NeutralUnit
+When the designated switch is on, allied forces are treated as neutral forces.
+Your army and neutral army can attack each other.
+
+## NumberInputEvent
+You can create numeric input events.
+
+## PosessionLimitItem
+Set the possession number limit for the weapon (item) type.
+
+## QuestRetreat
+Add a retreat command (return to base) to the quest map.
+
+## QuestSelectEvent
+You can create a quest selection event.
+
+## Range Skill
+You can create skills that increase or decrease weapon range.
+
+## ReinforceEvent
+You can create an event that forces reinforcements to appear.
+
+## Replace Npc
+Adds a control character that displays the NPC's name.
+
+## SelectMenuDescription
+Displays descriptions similar to the unit menu when selecting items, weapons, and staves.
+
+## StockTrade
+Change stock "all deposit" to "exchange".
+
+## SystemVariable
+Create a system variable in your environment data.
+
+## UnitItemSort
+Items can now be sorted in the unit menu.
+
+## UnitMenuPageChange
+Displays the number of pages if the unit menu has two or more pages. mouse support
+
+## Unknown HP
+When HP is above a certain level, it will be displayed as "???".
+
+## contact address
+wiz
+twitter: https://twitter.com/wiz9922
+GitHub: https://github.com/wiz9922/SRPGstudio
+mail: wizjp22@gmail.com
+

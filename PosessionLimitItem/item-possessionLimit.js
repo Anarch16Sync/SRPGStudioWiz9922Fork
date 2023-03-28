@@ -75,7 +75,6 @@ var isSizeDisplayable = false;
 
 //表示する場合の文字列
 //String to display
-
 StringTable.Item_Size = 'サイズ';
 
 //Localization Support
@@ -83,14 +82,11 @@ var getItemInfo_Item_Size = function() {
 	var folder = root.getLocalizationFolder();
 	
 	if (folder === 'english') {
-		return 'Battle';
+		return 'Size';
 	}
 	else if (folder === 'japanese') {
 		return 'サイズ';
 	}
-
-	//表示する場合の文字列
-	//String to display
 	return StringTable.Item_Size;
 };
 
