@@ -9,12 +9,26 @@ wiz
 SRPG Stduio Version:1.211
 
 ------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------
+When the designated switch is on, allied forces are treated as neutral forces.
+Your army and neutral army can attack each other.
+
+■ Creator
+wiz
+
+■ Correspondence version
+SRPG Studio Version: 1.211
+
+------------------------------------------------------------------------------*/
+
 (function() {
 
 //判定対象となるグローバルスイッチID
+//global switch id to be judged
 var neutralSwitchId = 1;
 
 //目標確認画面の中立軍名称
+//Neutral army name on the target confirmation screen
 StringTable.UnitType_Neutral = 'NEUTRAL';
 
 
@@ -41,6 +55,7 @@ FilterControl.getNormalFilter = function(unitType) {
 		}
 		else if (unitType === UnitType.ALLY) {
 			//敵対時は同盟無効
+			//Alliance invalid when hostile
 			//filter = UnitFilterFlag.ALLY;
 		}
 		
@@ -133,6 +148,7 @@ FilterControl.isReverseUnitTypeAllowed = function(unit, targetUnit) {
 };
 
 //通行設定
+//traffic settings
 var _SimulationBlockerControl_getDefaultFilter = SimulationBlockerControl.getDefaultFilter;
 SimulationBlockerControl.getDefaultFilter = function(unit) {
 	if(!isNeutralValid()) {
@@ -156,6 +172,7 @@ SimulationBlockerControl.getDefaultFilter = function(unit) {
 }
 
 //攻撃範囲表示
+//show attack range
 var _MarkingPanel_updateMarkingPanel = MarkingPanel.updateMarkingPanel;
 MarkingPanel.updateMarkingPanel = function() {
 		if(!isNeutralValid()) {
@@ -175,6 +192,7 @@ MarkingPanel.updateMarkingPanel = function() {
 };
 
 //目標確認
+//goal confirmation
 var _ObjectiveFaceZone__drawInfo = ObjectiveFaceZone._drawInfo;
 ObjectiveFaceZone._drawInfo = function(x, y, unit, unitType) {
 		if(!isNeutralValid()) {

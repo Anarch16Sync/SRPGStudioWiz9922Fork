@@ -11,6 +11,20 @@ wiz
 ■対応バージョン
 SRPG Studio Version:1.166
 ----------------------------------------------------------*/
+/*----------------------------------------------------------
+Adds a control character that displays the NPC's name in a format similar to variables (group+id)
+
+example:
+Name of NPC with ID0 in Group 1
+\npc1[0]
+
+■ Creator
+wiz
+
+■ Correspondence version
+SRPG Studio Version:1.166
+----------------------------------------------------------*/
+
 (function() {
 
 var alias1 = VariableReplacer._configureVariableObject;
